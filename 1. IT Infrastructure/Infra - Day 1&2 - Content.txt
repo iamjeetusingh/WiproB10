@@ -1,0 +1,313 @@
+IP address:
+------------
+
+Class A
+-----------
+	0.0.0.0 - 127.0.0.0
+	
+	0.0.0.0 	-> invalid range (now used by cloud)
+	127.0.0.0	-> testing / loopback IP address
+	
+	
+	1.0.0.0 - 126.0.0.0		--> usable class A address
+	
+Reserverd IP addresses
+-----------------------
+Class A		-->		10.0.0.0 - 10.255.255.255		-> private IP address
+Class B		-->		172.16.0.0 - 172.16.255.255		-> private IP address
+Class C		-->		192.168.0.0 - 192.168.255.255	-> private IP address
+
+
+APIPA IP address	-->  169.254.0.0 - 169.254.255.255
+	APIPA 
+		- Automatic Private IP Addressing
+		- it is assigned automatically, when DHCP does not allocate the IP.
+			- DHCP = Dynamic Host Configuration Protocol
+			
+Task 1 : list at least 20 commonly used port numbers
+		- HTTP		-	80
+		- HTTPS		-	443
+		- SSH		-	22
+		- DHCP		-	67, 68
+		- DNS		-	53
+		- RDP		-	3389
+		- SMTP		-	25
+		- POP3		-	110
+		- FTP		-	20, 21
+		- MYSQL		-	3306
+		
+Task 2 : difference between on-premises and cloud
+
+Task 3 : difference between router and switch
+
+Task 4 : difference between Layer 2 switch and Layer 3 switch
+
+Network LAN Technologies
+-------------------------
+	- Ethernet cables
+		- cat5, cat 6
+		- speed: 10 Mbps, 100 Mbps, 1 Gbps, 10 Gbps
+	- Wireless / WiFi
+		- Version: IEEE 802.11n, 802.11ac, 802.11ax
+	- Gigabit Ethernet
+		- 1 Gbps
+	- Bluetooth
+		- very short range network
+		
+Network WAN Technologies
+-------------------------
+	- Leased lines
+		- high speed connection
+		- point to point connection
+	- circuit switching
+		- traditional phone network model
+	- Fibre Optics WAN
+		- high speed network
+	- VPN
+		- Virtual Private Network
+		- security over internet (unsecured channel)
+		
+Server
+---------
+- to monitor, to manage or upgrade the server (DELL/HPE), we need interfaces like:
+	- HPE	-	iLO (integrated Lights-out)
+	- DELL	-	iDrac (integrated Dell Remote Access Controller)
+	- Intel	-	IPMI (Intelligent Platform Management Interface)
+	
+Server Form Factors
+--------------------
+	- it refers to the size, shape and design of a server.
+	- different type are:
+		- Blade server
+		- Rack Server
+		- Tower server
+
+Server Events
+--------------
+- these are the system genereated notification or logs
+- these helps admin to:
+	- monitor 
+	- troubleshoot
+	- maintenance
+- types of server events:
+	- hardware events		- genereated by CPU, memory, hdd, power
+	- Power events			- unexpected power off
+	- thermal events		- overheating
+	- boot events			- events gen during boot time
+	- OS events				- reboot, kernel panic
+	- security events		- login attempts, breaches
+	- network events		- link down, IP conflict, NIC fail
+	- storage events		- disk failure
+
+Basics of Storage
+------------------
+- Primary storage
+	- directly accessible by the CPU.
+	- its fast, but temporary.
+	- like:
+		- RAM, 
+		- Cache Memory 
+			- L1 Cache, 
+			- L2 Cache, 
+			- L3 Cache
+- secondary storage
+	- long-term storage
+	- like:
+		- Hard disk (HDD)
+			- it has movable parts
+		- Solid State Drive (SSD)
+			- it does not have movable parts
+		- CD/DVD
+		
+- archival storage
+	- long term storage
+	- like 
+		- tape drive
+		- cloud archives
+		
+- DAS
+	- Direct Attached Storage
+	- here storage is connected directly to the server/PC.
+		- USB, HDD, Flash drive
+	- no network sharing
+
+- NAS
+	- Network Attached Storage
+	- a storage unit attached/connected to the whole network.
+	- this storage is accessible onto different computers/server at the same time.
+	- file-level storage over LAN
+	- ex:
+		- NFS
+			- Network File Sharing
+			- for sharing data within similar OS (W-W & L-L)
+		- Samba
+			- for sharing data between various OSs (W-L)
+	- its is not preferred in enterprise, because it does not provide redundancy.		
+	
+
+- SAN
+	- Storage Area Network
+	- its high speed solution for enterprise
+	- because it provides redundancy
+	- it uses fibre-optics channel
+	
+Server and Client operating system
+-----------------------------------
+Server OS
+	- the job is to serve to the client
+	- server serves the request based on the need.
+	-	ex:
+		- DHCP server
+		- DNS server
+	- Windows servers
+		- Windows Server NT		(depricated)
+		- Windows Server 2003	(depricated)
+		- Windows Server 2008	(depricated)
+		- Windows Server 2008R2	(depricated)
+		- Windows Server 2012	(depricated)
+		- Windows Server 2012R2	(depricated)
+		- Windows Server 2016
+		- Windows Server 2019
+		- Windows Server 2022
+		- Windows Server 2025
+	
+Client OS
+	- the job is to request services from server
+	- client has very limited permission
+	- Windows Client OS:
+		- Windows XP
+		- Windows Vista
+		- Windows 7
+		- Windows 8.0
+		- Windows 8.1
+		- Windows 10
+		- Windows 11
+		
+
+Assign IP address to server/client OS:
+	- Manual / Static IP 
+	- Automatic / Dynamic IP (DHCP)
+	- APIPA
+		- to resolve, check DHCP is working or not.
+		- assign static/manual IP address
+
+
+File system
+------------
+- file system is a data structure used by an operating system to:
+	- organize
+	- store
+	- retrieve
+	- manage data
+- components of file system
+	- files			- container for the data.
+	- directory		- container for the file and directories
+	- inodes		- metadata about the file.
+	- blocks		- basic unit of storage allocation
+- file systems of windows
+	- FAT, FAT32, exFAT, NTFS, ReFS
+- file systems of linux
+	- EXT, EXT2, EXT3, EXT4, XFS, BRTFS, CRAMFS...
+	
+Storage types:
+-----------------
+- basic disk
+	- non-expandable disks
+	- you cannot increase or decrease the size of the hard disk.
+- dynamic disk
+	- these are expandable disks
+	- by attaching more disks, we can increase the size of disks
+	- dynamic disks are of 3 types:
+		- spanned volume
+		- mirror volume
+		- stripped volume
+- MBR 
+	- Master Boot Record
+	- its the older way to partition the HDD.
+	- the size of MBR is 512bytes
+	- Allows upto maximum "4 primary partitions" only.
+		- Primary partition 
+			- are the partitions that can hold the operating system in it.
+		- Extended partition 
+			- are the partitions that cannot hold the OS.
+			- they are just used for extending the partitions
+			- you can create more logical partition within one extended partition
+	- it supports only upto "2TB of HDD" size.
+	
+- GPT
+	- GUID (Globally Unique IDentifier) partition table
+	- it supports 128 primary partitions
+	- it supports upto 9.4ZB 
+		1ZB = 1,000,000,000 GBs
+	- the size of GPT is 512 bytes.
+	- GPT is a production-level solution
+
+- storage spaces
+	- storage spaces allow a user to merge two or more disks together and utilize the whole.
+	- this is a concept of "Windows" 10/11 or servers OS.
+	- in linux, similar concept is know by the name "LVM".
+	- in storage spaces, we can instantly plug and play more disks when required.
+
+- RAID
+	- Redundant Array of Independent Disks
+	- we merge multiple disks (all must be of identical sizes) to get the redundant data
+	- if in case the disk crashes, data can be still recovered.
+	- RAID is of different categories
+		- RAID 0	-	Stripping
+		- RAID 1	-	Mirroring
+		- RAID 10	-	Mirroring with Stripping
+		- RAID 5	-	Parity
+		- RAID 6	-	Dual Parity
+- ISCSI
+	- Internet Small Computer System Inteface
+	- iSCSI lets a computers/server access remote storage over the network as if it was a local HDD only.
+	- its a production-level solution
+	- its a network storage protocol that uses IP network.
+	- components of iSCSI:
+		- iSCSI Initiator
+			- the client that requests for the storage.
+		- iSCSI Target
+			- the storage device/server providing the storage to the iSCSI Initiator.
+		- LUN
+			- Logical Unit Number
+			- its a reference numbers
+		- Portal
+			- uses port 3260 for the communication
+
+Minimum requirements to install Win10 OS:
+	- 1GHz processor
+	- 1GB RAM (32bit OS), 2GB RAM (64bit OS), 4GB RAM (Recommended)
+	- 16GB HDD (32Bit), 32GB HDD (64Bit)
+	- DirectX12 for graphics
+	
+Virtualization:
+-----------------
+- Virtualization is a tech that allow you to create/run virtual version of:
+	- Servers
+	- OS
+	- Storage
+	- Network
+- Virtualization ca be achieved using a tool/software called "Hypervisor".
+- Hypervisors are of 2 types:
+	- Type 1 Hypervisor (Bare-matel Hypervisor)
+		- does not require additional OS to function.
+		- used in the production environments
+		- they provide best performance
+		- but they require licenses.
+		- ex:
+			- Microsoft Hyper-V
+			- VMWare ESXi
+			- Citrix XenServers
+			- Proxmox
+	- Type 2 Hypervisor	(Guest-Based Hypervisor)
+		- operating system is needed. without OS, this HV will not work.
+		- useful for testing/home purpose.
+		- their performance is not equivalent to Type 1.
+		- ex:
+			- Microsoft Hyper-V (Windows 10/11 - Enterprise/Pro)
+			- VMWare workstation (free)
+			- Oracle Virtual Box (free)
+			- VMWare player (free)
+			- VMWare fusion (Paid - MacOS)
+			- Linux KVM (Kernel-based Virtual Machine) (free)
+			
