@@ -311,3 +311,10 @@ Virtualization:
 			- VMWare fusion (Paid - MacOS)
 			- Linux KVM (Kernel-based Virtual Machine) (free)
 			
+- task
+	- install the win10/11
+	- configure the IP address, Subnet mask, DGW, DNS
+	- turn off firewall
+	- configure the computer name / hostname
+	- take snapshot of this VM
+	
