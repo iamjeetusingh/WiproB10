@@ -1,0 +1,473 @@
+Server 
+	- a machine that responds to the client's request.
+	- OS
+		- Windows 2012R2
+		- Windows 2016
+		- Windows 2019
+		- Windows 2022
+		- Windows 2025
+		
+Ques - diff. between windows server 2012R2 and windows server 2016?
+Ques - What is windows server core operating system?
+Ques - What is NANO server?
+Ques - how will you manage server core operating system?
+Ques - major diff between windows server & windows client machine?
+
+Editions
+----------
+	- Windows Server 2016 Standard edition
+		- with limited virtualization features
+		- RAM  = 24TB
+		- Core = 512
+	
+	- Windows Server 2016 Datacenter edition
+		- license = cores (CPU) per host 
+		- with unlimited virtualization 
+	
+	- Windows Server 2016 Essentials edition
+		- for small businesses (up to 25 users, 50 devices)
+	
+	- Windows Server 2016 Hyper-V edition	
+		- Type 1 hypervisor to run VMs
+	
+Installing windows server 2016/19
+	- Desktop Experience
+		- its a fully functional GUI/Graphical operating system
+	- Core
+		- its a fully functional CLI operating system
+	- Nano
+		- its a CLI server that runs on PowerShell cmds (cmdlets)
+
+System requirements for windows server 2016/2019
+	- Processor
+		- 1.4GHz 64 bit processor
+	- RAM
+		- 2GB minimum
+		- 4GB Recommended
+	- HDD
+		- 32GB minimum
+	- Network
+		- 1 NIC card (Gigabit Ethernet Adapter)
+		
+Server Core Operating System:
+-----------------------------
+	- its a CLI OS
+	- the command to manage the server core: "sconfig.cmd"
+
+commands to manage server core
+	- sconfig.cmd
+		- this is a menu-driven cmd to manage your computer.
+	- cmd.exe
+		- to work with command prompt
+	- powershell.exe
+		- to work with powershell
+	- msinfo32.exe
+		- allow you to view systems information
+	- taskmgr.exe
+		- launches the task manager
+	- SCregEdit.wsf
+		- to enable remote desktop on server core
+		
+Roles
+------
+	- are made up of role services components that provide additional functionality associated with the role.
+	- we need to install the role(s), in order to get the appro. services.
+
+list of roles:
+	- ADDS (Active Directory Domain Services)
+	- ADFS (Active Directory Federation Services)
+	- ADRMS (Active Directory Rights Management Services)
+	- DHCP (Dynamic Host Configuration Protocol)
+	- DNS (Domain Name Service)
+	- Web server
+	- FSRM (File server resource manager)
+	- Hyper-V
+	- WSUS (Windows server update service)
+	- WDS (Windows Deployment service)
+	- Remote access
+	- Remote desktop service (RDS)
+	
+Features:
+------------
+	- independent components that supports the "Roles" in thier working.
+	- are the backbone for the roles.
+	- list of features:
+		- DotNet 3.5 Framework
+		- DotNet 4.5 Framework
+		- Bitlocker
+		- BITS
+
+Server Manager: (Server Manager Dashboard Page)
+----------------
+	- is a graphical tool for managing local or remote computers in windows servers
+	- what we can do?
+		- install/uninstall roles
+		- install/uninstall features
+		- manage local machine
+			- computer name
+			- IP address
+			- Firewall
+			- Clock
+		- manage remote computers
+
+Administrative tools:
+----------------------
+	- Active Directory Administrative Center
+	- Active Directory Users & Computers
+	- DNS Console
+	- Event Viewer
+	- Performance Monitor
+	- Task Schedular
+	- IIS Manager
+	- GPMC (Group Policy Management Console)
+	
+Installation methods:
+----------------------
+	1. Optical Disk (DVD)
+	2. WDS (Windows Deployment Service) - Network boot
+	3. USB Media (pendrive)
+
+Windows Active Directory (WAD): or Active Directory (AD)
+---------------------------------------------------------
+	- is a directory service developed by Microsoft. 
+	- linux version of AD is called "LDAP" (Light Weight Directory Access Protocol)
+	- it stores all the information like
+		- Users
+		- Groups
+		- Computers
+	- it perform 2As
+		- Authentication (verify your identity)
+		- Authorization  (Granting Permissions)
+	- you can manage & control resources
+		- network resources
+		- Policies
+		- User accounts & what they access.
+	- to get the AD within your organization, we need to install "ADDS" (Active Directory Domain Service) role on windows server.
+
+Terms used in Active Directory (AD) concept:
+--------------------------------------------
+Domain
+	- logical boundary for administrative purpose.
+	- it is a collection of objects
+		- users
+		- computers
+		- groups
+	- all the objects shares the same database
+		- Name of the domain database is "NTDS.DIT"
+			- "New Technology Directory Service.directory"
+		- this database is stored with the AD domain.
+	- domain is represented as a TRIANGLE.
+	
+Tree
+	- hierarchy of domains with the root domain.
+	
+Forest
+	- collection of AD trees.
+	- it shares a common schema (blueprint) & global catalog (indexing)
+
+Schema
+	- its the blueprint
+	- defines the types of objects created in the directory.
+
+Global catalog
+	- a searchable index
+	- we search for the objects with the help of GC server.
+
+OU (Organizational Unit)
+	- its like a department
+	- these are like containers within a domain that holds
+		- users
+		- computers
+		- groups
+Site
+	- Physical, Geo-Graphical location within domain
+	- it contains multiple OUs in it.
+
+Group Policy
+	- its a policy that is applied to manage the domain & its objects.
+	- its a centrailzed policy to manage
+		- users
+		- computers
+		- permissions
+		- security
+	- to create, manage & delete a policy we need GPMC (Group Policy Management Console)
+	- group policies are applied on OUs.
+	
+Group Policy hierarchical structure:
+	- local group policy
+		- this policy is applied on local computer only & impacts only on your computer.
+	- site-level group policy
+		- these policies are applied on the SITE level.
+		- all the computers within specific site are applied with this policy.
+	- Domain level group policy
+		- domain policies are applied to all users and computers within that domain.
+	- Organizational Unit (OU) level group policies
+		- these policies are applied onto the whole OU.
+
+Components of an Active Directory (AD)
+---------------------------------------
+	1. Physical Component
+		- Domain Controller (DC)
+			- it contains the copy of AD database (NTDS.dit)
+		- Data Store
+			- the file on each domain controller that stores the AD information.
+		- Global Catalog (GC) Server
+			- its a server that hosts the read-only copy of all objects within domain for faster search.
+		- Read-Only Domain Controller (RODC)
+			- its a special type (read-only) of domain controller.
+			- this RODC is often used in branch offices.
+	
+	2. Logical Component
+		- Partition
+			- its the logical seperation within the NTDS.dit database
+			- aka naming contexts
+		- Schema
+		- Domain
+		- Domain Tree
+		- Forest
+		- Site
+		- OU
+		
+AD DS logon process:
+------------------
+	1. user provided username & password and it gets authenticated by DC.
+	2. DC returns the TGT (Ticket Granting Token).
+	3. using this TGT, client applies to login to SVR using WS.
+	4. client is then allowed to login to the SVR using the TGT.
+	
+
+types of DCs
+	1. Domain Controller (DC)
+	2. Additional Domain Controller (ADC)
+	3. Backup domain controller (BDC)
+	4. Read-Only Domain Controller (RODC)
+	5. Primary Domain Controller (PDC)
+
+Operations Master:
+-------------------
+	- aka FSMO (Flexible Single Master Operation)
+	- these are the special domain controller tasks/roles
+	- 5 types of FSMO roles, that are applied on forest-level & Domain level
+	- Roles in FSMO
+		1. Forest 
+			a. Domain Naming Master
+				- checks for the name
+			b. Schema Master
+				- checks for the blueprint
+		2. Domain
+			c. RID (Relative IDentifier) master
+				- this allocates the blocks of RIDs to different domain controllers within the domain.
+					- whenever an object (user, computer or group) is created within a domain env, a unique SID (Security IDentifier) is allocated to this object.
+				- the job of RID is to ensure that no 2 objects have same SID.
+				- a set of total 500 RIDs are allocated in domain level, at once.
+					- SID
+						"S-1-5-21-1341496841-55697840-1495310029-1001"
+							-> "S-1-5-21" - type of ID
+							-> "1341496841-55697840-1495310029" - where the account is stored
+							-> "1001" - is RID
+			d. PDC (Primary Domain Controller) Emulator
+				- it provides the back compatibility with old system
+				- it handles the "password change" & account lockouts.
+				- it also checks the time on every system within the domain.
+				- Every domain has only ONE PDC Emulator.
+			e. Infrastructure Master
+				- this manages references to the objects in other domain.
+				- it is used for cross-domain object reference.
+				
+				
+Task:
+======
+first finish below tasks
+	1. Installation of windows server 2016 completed 
+	2. VMWare tools Installation completed 
+	3. power off the windows server 2016 (that u just installed)
+	4. install another VM, with windows server 2016 datacenter (CORE) edition
+
+THE MOST IMP THING:
+===========================
+REVISE ALL THE TOPICS, THAT WE STUDIED TILL NOW.
+:)
+
+Post installation configuration  -->  Server Manager Dashboard Page:
+--------------------------------------------------------------------
+- here, we perform several tasks just after the installation is completed
+- tasks like:
+	- to set IP address
+	- to change the time & time zone
+	- configure firewall
+	- to change the IE configuration settings
+	- to change the remote management settings
+	- to change the computer name
+	
+Converting server machine into a DOMAIN CONTROLLER (DC):
+--------------------------------------------------------
+	1. Install a windows server OS (2016)
+	2. Perform post installation configuration
+	3. Install ADDS role on this server
+		- GUI -> server manager to install this role.
+		- CLI -> powershell to install this role.
+	4. promote your machine from server to domain controller.
+	5. restart this machine & login as domain administrator.
+		normal	-> administrator
+		domain	-> domain_name\administrator
+
+Note: when you install & promote your machine to DC using ADDS role, DNS role automatically gets installed. 
+
+Domain Joining:
+-----------------
+	- add a client/server operating system to the domain controller.
+	- so that the client/server os can be controlled by DC.
+	- so that client/server machine can be applied with the group policies.
+	- so that a user that got created on DC can login into this machine.
+	
+requirements for domain joining:
+	- both DC and client must be power on
+	- both machines must have the same LAN SEGMENT (windows)
+	- both machines should be in same network
+		DC 		
+			IP = 192.168.10.10
+			SM = 255.255.255.0
+			GW = 127.0.0.1
+		client 	
+			IP = 192.168.10.11
+			SM = 255.255.255.0
+			GW = 192.168.10.10
+		   DNS = 192.168.10.10
+		   
+to domain join a windows server OS
+	- install the server os
+	- perform post installation configuration
+	- doin join it.
+	
+PS Cmdlet to create a new OU:
+New-ADOrganizationalUnit -Name WiproDCb42 -ProtectedFromAccidentalDeletion $false
+New-ADOrganizationalUnit -Name demoOU -ProtectedFromAccidentalDeletion $false
+ 
+File systems supported in Windows Server:
+	- FAT		(File Allocation Table)			-->  Old
+	- FAT32										-->  Old, Pendrives
+	- NTFS		(New Technology File System)	-->  Default file system
+	- ReFS		(Resilient File System)
+
+Ques: Difference between FAT32 & NTFS files system?
+
+run -> diskmgmt.msc
+
+DNS Records:
+--------------
+- entries of a device
+- types
+	- A		=  	IPv4 address (www.google.com -> 1.1.1.1)
+	- AAAA	=	IPv6 address
+	- MX	= 	Mail Exchange
+	- SOA	= 	Start of Authority
+	- PRT	= 	Pointer
+
+
+password requirements:
+	- minimum 8 chars
+	- 1 cap 
+	- 1 small
+	- 1 special chars
+	- 1 number
+	
+DNS records:
+-------------
+- A record	-> 	IPv4 address
+	www.google.com   <---->   116.115.114.113
+	
+- AAAA record	-> 	IPv6 address
+	www.google.com   <---->   2404:6800:4009:823::200e
+	
+- CNAME record (Canonical name / Alias name)
+	www.facebook.com   <---->   fb.com 
+	
+- PTR record (pointer)
+	IP    >>   Name
+	
+- SOA record (Start of Authority)
+
+DNS Zones:
+------------
+1. Forward lookup Zone
+	- used for resolving names into IP address.
+		www.google.com   ---->   116.115.114.113
+	- there are records that are releated to FLZ:
+		- A record
+		- AAAA record
+		- CNAME record
+
+2. Reverse lookup Zone
+	- used to resolve IP back to name 
+		116.115.114.113     ---->   www.google.com
+	- PTR record is related to RLZ.
+	
+SVR name
+	blr.dc.training.in		--> FQDN (Fully Qualified Domain Name)
+	
+For viewing the events in powershell:
+Get-EventLog -LogName Application -Newest 5 | Format-Table -AutoSize -Wrap
+
+
+Disks:
+	1. Static / Basic Disk
+		- it's a fixed disk.
+		- where size of the disk can't be changed.
+	2. Dynamic disk
+		- where size of the disk can be increased or decreased as per requirements.
+		- dynamic disks are of 3 types:
+			1. Striped disk
+				- in this, data is distributed across multiple disks.
+			2. Mirrored disk
+				- in this disk, data get duplicated across different disks.
+			3. Spanned disk
+				- in this, multiple disks of different sizes can be add into one single disk.
+				
+Windows Server Backup:
+----------------------
+	- 3rd party tools (free tools & paid tools)
+	- Windows server backup	(WSB) tool
+
+
+Types of backups:
+--------------------
+	1. Full backup
+		- it backs up whole/full system, which includes
+			- system state
+			- applications installed
+			- its data.
+		- it requires more storage space.
+		- it can recover whole machine or a specific file when needed.
+	2. Incremental backup
+		- backs up only the changes made since last backup (full or incremental).
+		- it requires less storage
+		- it is faster than full backup
+		- for restoring a file, it requires full backup & incremental backup in a sequence.
+	3. Differential backup:
+		- it backs up all the changes made since the last FULL BACKUP.
+		- it takes more space than incremental backup
+		- but it can restore files & folder faster than incremental backup.
+	4. System state backup
+		- it backs up only the critical components	
+			- active directory
+			- registry
+			- boot files
+			- system files
+	5. file & folder backup
+		- it backs up selected files & folders instead of full disk.
+	6. bare-Metal backup (BMR - bare matel recovery)
+		- it creates a full backup of the server, allowing you to restore everything inclusing OS or partitions on same or different hardware.
+		
+list of backup tools:
+----------------------
+1. Windows Server Backup (WSB)
+	- built-in tool
+2. System Center Data Protection Manager (DPM)
+	- enterprise backup solution
+3. Azure backup 
+	- Cloud based backups
+	- recovery service vaults
+4. 3rd party backups
+	- Veeam
+	- Acronis
+	- Commvault
