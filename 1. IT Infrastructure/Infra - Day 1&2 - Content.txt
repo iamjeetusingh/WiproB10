@@ -318,3 +318,15 @@ Virtualization:
 	- configure the computer name / hostname
 	- take snapshot of this VM
 	
+
+
+
+
+
+Local administrator		--> administrator or .\administrator
+
+Domain administrator	--> domain\administrator
+	domain --> training.com
+				training\administrator   OR
+				administrator@training.com
+				lahari.a@wipro.com
