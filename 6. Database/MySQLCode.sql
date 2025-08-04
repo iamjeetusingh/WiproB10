@@ -131,8 +131,103 @@ SELECT firstname FROM emp WHERE salary > 500000.00;
 # list all the names where salary is between 500000.00 and 1000000.00
 SELECT firstname FROM emp WHERE salary BETWEEN 500000.00 AND 1500000.00;
 
+# delete the rows within the table.
+TRUNCATE TABLE emp;			# quickly cleans the whole table
+SELECT * FROM emp;
 
+# adding another column in the table
+ALTER TABLE emp ADD department varchar(20);
+SELECT * FROM emp;
 
+INSERT INTO emp (employee_id, firstname, lastname, email, salary, company, department) 
+VALUE 
+(1,'Jitendra','Tomar','jeetu@gmail.com',1000000.00, 'wipro','IT'),
+(2,'Brijendra','Tomar','brijendra@gmail.com',1200000.00, 'wipro','Sports'),
+(3,'Radha','Tomar','radha@gmail.com',500000.00, 'wipro','Developer'),
+(4,'Deeksha','Jagdeshwaran','deeksha@gmail.com',1500000.00, 'wipro','Developer'),
+(5,'Raghu','Ram','raghuram@gmail.com',1300000.00, 'wipro','Manager'),
+(6,'Ramya','S','ramyas@gmail.com',2000000.00, 'wipro','Sales'),
+(7,'Blossom','A','blossom@gmail.com',1000000.00, 'wipro','Operations')
+;
+SELECT * FROM emp;
 
+# list all the name with their salaries from Developer department - restricting rows
+SELECT firstname, salary FROM emp WHERE department = "Developer";
 
+# combining 
+SELECT * FROM emp WHERE department = 'IT' AND firstname = 'jitendra';
 
+# IN
+SELECT * FROM emp WHERE department IN ('IT','Manager','Developer');
+
+# pattern
+SELECT * FROM emp WHERE department LIKE "Dev%";
+
+# alias
+SELECT firstname AS 'First Name', lastname AS 'Last Name' from emp;			# only temporary changes.
+SELECT * FROM emp;
+
+# Alias with functions
+SELECT COUNT(*) FROM emp;
+SELECT COUNT(*) AS TotalEmployees FROM emp;
+
+# to display name, salary & bonus
+SELECT firstname, salary, salary * 0.010 AS bonus FROM emp;
+
+# list average salary using group functions
+SELECT COUNT(*) AS TotalEmployees, AVG(salary) AS AverageSalary FROM emp;
+
+# showing average salaries department-wise
+SELECT department, COUNT(*) AS NumEmployees, SUM(salary) AS TotalSalary 
+FROM emp
+GROUP BY department;
+
+SHOW TABLES;
+
+/* 
+cloning a table
+	- cloning can be done in 3 ways:
+		1. Simple cloning
+			- it clones only structure.
+            - no data and no constraints or indexes
+            - it copies column names and data types.
+            - it does not include primary keys, foreign keys, indexes or data.
+            - ex:
+				# CREATE TABLE new_table LIKE original_table;
+                
+		2. Shallow cloning
+			- it clones structure and data.
+            - but without copying dependent objects like constraints or relationships
+            - it does not copy foreign keys, triggers or indexes
+            - ex:
+				# CREATE TABLE new_table AS SELECT * FROM original_table;
+                
+		3. Deep cloning
+			- it clones everything
+				- structure, data, constraints, indexes, and so on...
+			- it make a true duplicate of a table.
+            - ex:
+				# CREATE TABLE new_table LIKE original_table;
+                # INSERT INTO new_table SELECT * FROM original_table;
+
+*/
+
+# shallow cloning
+CREATE TABLE sc_emp SELECT * FROM emp;
+SHOW TABLES;
+SELECT * FROM sc_emp;
+
+# deep cloning
+CREATE TABLE dc_emp LIKE emp;
+INSERT INTO dc_emp SELECT * FROM emp;
+SELECT * FROM dc_emp;
+
+SHOW TABLES;
+
+# deleting a table
+DROP TABLE emp;
+DROP TABLE sc_emp;
+DROP TABLE dc_emp;
+
+# delete a database
+DROP DATABASE employee;
