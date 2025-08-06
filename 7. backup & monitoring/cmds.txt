@@ -8,3 +8,7 @@ chmod 600 /usr/local/nagiosxi/var/certs/nagiosxi.key
 chmod 644 /usr/local/nagiosxi/var/certs/nagiosxi.crt
 
 systemctl restart httpd
+
+
+# FOR WINDOWS
+https://assets.nagios.com/downloads/ncpa3/ncpa-latest.exe
