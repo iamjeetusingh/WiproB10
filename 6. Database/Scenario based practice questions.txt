@@ -1,0 +1,48 @@
+Scenario 1: Student Database Management
+Your college wants to build a system to manage students, their courses, and marks.
+Tasks:
+- Design a normalized database schema with tables for Students, Courses, and Enrollments.
+- Write a CREATE TABLE statement for each.
+- Insert at least 2 students and 2 courses.
+- Display the student names and the courses they enrolled in using appropriate JOIN queries.
+- Find the average marks per course using grouping functions.
+
+Scenario 2: E-commerce Product Search
+You’re designing a simple product catalog for an online store.
+Tasks:
+- Create a table called Products with columns: ProductID, ProductName, Category, Price, AvailableStock.
+- Write a query to:
+- Display all products priced above ₹500.
+- Sort them in descending order of price.
+- Show ProductName as Item and AvailableStock as Stock Left using aliases.
+- Write a query to count the number of products in each category.
+
+Scenario 3: Employee Management System
+A company has departments and employees. You’re asked to design this data system.
+Tasks:
+- Create two tables: Departments and Employees. Use a foreign key in Employees to link to Departments.
+- Insert sample data with at least 3 employees and 2 departments.
+- Display employee names along with their department names.
+- Display the total number of employees in each department.
+- Write a subquery to show employees whose salary is greater than the average salary of all employees.
+
+Scenario 4: Library Book System
+A library wants to track books, authors, and book issues.
+Tasks:
+- Create tables: Books, Authors, IssuedBooks.
+- Populate the tables with relevant data.
+- Write a query to display all issued books with the book title and author name.
+- Use string functions to:
+- Display book titles in uppercase.
+- Extract the first 3 characters of the author's name.
+- Find the number of books issued per author.
+
+Scenario 5: Table Maintenance and Modifications
+You're managing an old employee table that needs updates.
+Tasks:
+- Use DDL commands to:
+- Add a column JoiningDate to the existing Employees table.
+- Change the data type of Salary from INT to DECIMAL(10,2).
+- Drop an unnecessary column TempField.
+- Update salaries by 10% for all employees in the Sales department.
+- Delete all employees whose salary is less than ₹20,000.
