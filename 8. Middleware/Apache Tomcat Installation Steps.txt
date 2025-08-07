@@ -1,0 +1,93 @@
+Step-by-Step: Install and Configure Apache Tomcat on CentOS 9
+Prerequisites
+- CentOS 9 Stream or CentOS 9 minimal
+- Sudo privileges
+- Internet access
+
+1. Install Java (Tomcat needs Java)
+Apache Tomcat requires Java 8+. You can install OpenJDK:
+ # sudo dnf install java-17-openjdk -y
+Verify:
+ # java -version
+
+2. Create a Tomcat User (Non-root)
+# sudo useradd -r -m -U -d /opt/tomcat -s /bin/false tomcat
+
+3. Download Apache Tomcat
+# cd /tmp
+# wget https://downloads.apache.org/tomcat/tomcat-10/v10.1.43/bin/apache-tomcat-10.1.43.tar.gz
+
+Extract and move to installation directory:
+# sudo tar -xzvf apache-tomcat-10.1.43.tar.gz -C /opt/tomcat --strip-components=1
+
+4. Set Permissions
+Give ownership to the tomcat user:
+# sudo chown -R tomcat: /opt/tomcat
+Make scripts executable: 
+# sudo sh -c 'chmod +x /opt/tomcat/bin/*.sh'
+ 
+5. Create a Systemd Service File
+This allows Tomcat to run as a service:
+# sudo nano /etc/systemd/system/tomcat.service
+
+Paste this config: 
+[Unit]
+Description=Apache Tomcat Web Application Container
+After=network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+
+Environment="JAVA_HOME=/usr/lib/jvm/java-17-openjdk"
+Environment="CATALINA_PID=/opt/tomcat/temp/tomcat.pid"
+Environment="CATALINA_HOME=/opt/tomcat"
+Environment="CATALINA_BASE=/opt/tomcat"
+
+ExecStart=/opt/tomcat/bin/startup.sh
+ExecStop=/opt/tomcat/bin/shutdown.sh
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
+
+6. Reload Daemon and Start Tomcat
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl enable --now tomcat
+
+Verify status:
+# sudo systemctl status tomcat
+
+7. Allow Firewall (Optional)
+# sudo firewall-cmd --permanent --add-port=8080/tcp
+# sudo firewall-cmd –reload
+
+8. Test in Browser
+http://<your-server-ip>:8080
+
+9. Enable Tomcat Web Management Interface (Optional)
+Edit file  sudo nano /opt/tomcat/conf/tomcat-users.xml
+
+Add this inside <tomcat-users> tag:
+<role rolename="manager-gui"/>
+<role rolename="admin-gui"/>
+<user username="admin" password="admin123" roles="manager-gui,admin-gui"/>
+
+Then save & quit.
+
+
+10. Then allow access from remote (edit context.xml in these 2 files):
+# sudo nano /opt/tomcat/webapps/manager/META-INF/context.xml
+# sudo nano /opt/tomcat/webapps/host-manager/META-INF/context.xml
+
+Comment or remove this line:  Comment using <!-- <value….1”/> --> in both context.xml files.
+<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+       allow="127\.\d+\.\d+\.\d+|::1"/>
+
+Restart Tomcat:
+# sudo systemctl restart tomcat
