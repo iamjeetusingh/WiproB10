@@ -282,34 +282,34 @@ Minimum requirements to install Win10 OS:
 	
 Virtualization:
 -----------------
-- Virtualization is a tech that allow you to create/run virtual version of:
-	- Servers
-	- OS
-	- Storage
-	- Network
-- Virtualization ca be achieved using a tool/software called "Hypervisor".
-- Hypervisors are of 2 types:
-	- Type 1 Hypervisor (Bare-matel Hypervisor)
-		- does not require additional OS to function.
-		- used in the production environments
-		- they provide best performance
-		- but they require licenses.
-		- ex:
-			- Microsoft Hyper-V
-			- VMWare ESXi
-			- Citrix XenServers
-			- Proxmox
-	- Type 2 Hypervisor	(Guest-Based Hypervisor)
-		- operating system is needed. without OS, this HV will not work.
-		- useful for testing/home purpose.
-		- their performance is not equivalent to Type 1.
-		- ex:
-			- Microsoft Hyper-V (Windows 10/11 - Enterprise/Pro)
-			- VMWare workstation (free)
-			- Oracle Virtual Box (free)
-			- VMWare player (free)
-			- VMWare fusion (Paid - MacOS)
-			- Linux KVM (Kernel-based Virtual Machine) (free)
+Virtualization is a tech that allow you to create/run virtual version of:
+Servers
+OS
+Storage
+Network
+Virtualization can be achieved using a tool/software called "Hypervisor".
+Hypervisors are of 2 types:
+Type 1 Hypervisor (Bare-matel Hypervisor)
+does not require additional OS to function.
+used in the production environments
+they provide best performance
+but they require licenses.
+ex:
+Microsoft Hyper-V
+VMWare ESXi
+Citrix XenServers
+Proxmox
+Type 2 Hypervisor	(Guest-Based Hypervisor)
+operating system is needed. without OS, this HV will not work.
+useful for testing/home purpose.
+their performance is not equivalent to Type 1.
+ex:
+Microsoft Hyper-V (Windows 10/11 - Enterprise/Pro)
+VMWare workstation (free)
+Oracle Virtual Box (free)
+VMWare player (free)
+VMWare fusion (Paid - MacOS)
+Linux KVM (Kernel-based Virtual Machine) (free)
 			
 - task
 	- install the win10/11
@@ -318,15 +318,3 @@ Virtualization:
 	- configure the computer name / hostname
 	- take snapshot of this VM
 	
-
-
-
-
-
-Local administrator		--> administrator or .\administrator
-
-Domain administrator	--> domain\administrator
-	domain --> training.com
-				training\administrator   OR
-				administrator@training.com
-				lahari.a@wipro.com
